@@ -28,7 +28,7 @@ jobs:
           archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_RUFF_REPAIRED.zip"
           url="https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/main/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_RUFF_REPAIRED.zip"
           curl --fail --location --retry 3 --retry-delay 2 --max-time 120 "$url" --output "$archive"
-          echo "d71f90159844208ea2c170dd16168f669b4ddfb61987838c27d1b2efae5bd102  $archive" | sha256sum --check --strict
+          echo "782ecf1c4587d965221c6101d40a55c3f80601b1fb99e324fa22c5afc36234a3  $archive" | sha256sum --check --strict
           mkdir -p "$RUNNER_TEMP/v17-source"
           python -m zipfile -e "$archive" "$RUNNER_TEMP/v17-source"
           test -f "$RUNNER_TEMP/v17-source/pyproject.toml"
@@ -66,7 +66,7 @@ jobs:
           set -euo pipefail
           archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_RUFF_REPAIRED.zip"
           curl --fail --location --retry 3 --retry-delay 2 --max-time 120 "https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/main/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_RUFF_REPAIRED.zip" --output "$archive"
-          echo "d71f90159844208ea2c170dd16168f669b4ddfb61987838c27d1b2efae5bd102  $archive" | sha256sum --check --strict
+          echo "782ecf1c4587d965221c6101d40a55c3f80601b1fb99e324fa22c5afc36234a3  $archive" | sha256sum --check --strict
           mkdir -p "$RUNNER_TEMP/v17-source"
           python -m zipfile -e "$archive" "$RUNNER_TEMP/v17-source"
       - name: Install pinned Ruff
@@ -93,7 +93,7 @@ jobs:
           set -euo pipefail
           archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_RUFF_REPAIRED.zip"
           curl --fail --location --retry 3 --retry-delay 2 --max-time 120 "https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/main/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_RUFF_REPAIRED.zip" --output "$archive"
-          echo "d71f90159844208ea2c170dd16168f669b4ddfb61987838c27d1b2efae5bd102  $archive" | sha256sum --check --strict
+          echo "782ecf1c4587d965221c6101d40a55c3f80601b1fb99e324fa22c5afc36234a3  $archive" | sha256sum --check --strict
           mkdir -p "$RUNNER_TEMP/v17-source"
           python -m zipfile -e "$archive" "$RUNNER_TEMP/v17-source"
       - name: Install scanner
