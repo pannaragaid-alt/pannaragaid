@@ -28,7 +28,7 @@ jobs:
           archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P1_OPERATIONAL_HARDENED.zip"
           url="https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/main/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P1_OPERATIONAL_HARDENED.zip"
           curl --fail --location --retry 3 --retry-delay 2 --max-time 120 "$url" --output "$archive"
-          echo "a02107d5d93cff5f04cb156ea6569a5def31216de5c9577510b2be105a21274f  $archive" | sha256sum --check --strict
+          echo "aa038a11f242cd6bdaf7a1df84853c4cb64a5035448510e0d6119010728a59c1  $archive" | sha256sum --check --strict
           mkdir -p "$RUNNER_TEMP/v17-source"
           python -m zipfile -e "$archive" "$RUNNER_TEMP/v17-source"
           test -f "$RUNNER_TEMP/v17-source/pyproject.toml"
@@ -66,7 +66,7 @@ jobs:
           set -euo pipefail
           archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P1_OPERATIONAL_HARDENED.zip"
           curl --fail --location --retry 3 --retry-delay 2 --max-time 120 "https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/main/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P1_OPERATIONAL_HARDENED.zip" --output "$archive"
-          echo "a02107d5d93cff5f04cb156ea6569a5def31216de5c9577510b2be105a21274f  $archive" | sha256sum --check --strict
+          echo "aa038a11f242cd6bdaf7a1df84853c4cb64a5035448510e0d6119010728a59c1  $archive" | sha256sum --check --strict
           mkdir -p "$RUNNER_TEMP/v17-source"
           python -m zipfile -e "$archive" "$RUNNER_TEMP/v17-source"
       - name: Install pinned Ruff
@@ -93,7 +93,7 @@ jobs:
           set -euo pipefail
           archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P1_OPERATIONAL_HARDENED.zip"
           curl --fail --location --retry 3 --retry-delay 2 --max-time 120 "https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/main/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P1_OPERATIONAL_HARDENED.zip" --output "$archive"
-          echo "a02107d5d93cff5f04cb156ea6569a5def31216de5c9577510b2be105a21274f  $archive" | sha256sum --check --strict
+          echo "aa038a11f242cd6bdaf7a1df84853c4cb64a5035448510e0d6119010728a59c1  $archive" | sha256sum --check --strict
           mkdir -p "$RUNNER_TEMP/v17-source"
           python -m zipfile -e "$archive" "$RUNNER_TEMP/v17-source"
       - name: Install scanner
