@@ -25,10 +25,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_REPAIRED.zip"
-          url="https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/main/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_REPAIRED.zip"
+          archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_RUFF_REPAIRED.zip"
+          url="https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/main/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_RUFF_REPAIRED.zip"
           curl --fail --location --retry 3 --retry-delay 2 --max-time 120 "$url" --output "$archive"
-          echo "37a3e8148d7b6b071a9320b3f7cdb5f6c94d486e5396cea696dfaec5ee0adcc5  $archive" | sha256sum --check --strict
+          echo "0977ab4ae2e9a90466e029c93117954740f842b1e7904e24126fd1514f53ae92  $archive" | sha256sum --check --strict
           mkdir -p "$RUNNER_TEMP/v17-source"
           python -m zipfile -e "$archive" "$RUNNER_TEMP/v17-source"
           test -f "$RUNNER_TEMP/v17-source/pyproject.toml"
@@ -64,16 +64,16 @@ jobs:
       - name: Download and verify source archive
         run: |
           set -euo pipefail
-          archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_REPAIRED.zip"
-          curl --fail --location --retry 3 --retry-delay 2 --max-time 120 "https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/main/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_REPAIRED.zip" --output "$archive"
-          echo "37a3e8148d7b6b071a9320b3f7cdb5f6c94d486e5396cea696dfaec5ee0adcc5  $archive" | sha256sum --check --strict
+          archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_RUFF_REPAIRED.zip"
+          curl --fail --location --retry 3 --retry-delay 2 --max-time 120 "https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/main/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_RUFF_REPAIRED.zip" --output "$archive"
+          echo "0977ab4ae2e9a90466e029c93117954740f842b1e7904e24126fd1514f53ae92  $archive" | sha256sum --check --strict
           mkdir -p "$RUNNER_TEMP/v17-source"
           python -m zipfile -e "$archive" "$RUNNER_TEMP/v17-source"
-      - name: Install Ruff
-        run: python -m pip install "ruff>=0.9,<1"
-      - name: Run Ruff
+      - name: Install pinned Ruff
+        run: python -m pip install "ruff==0.17.6"
+      - name: Run Ruff with repository policy
         working-directory: ${{ runner.temp }}/v17-source
-        run: ruff check v17_niche_intel tests
+        run: ruff check --config pyproject.toml v17_niche_intel tests
 
   security:
     name: ${{ matrix.scanner }} security scan
@@ -91,9 +91,9 @@ jobs:
       - name: Download and verify source archive
         run: |
           set -euo pipefail
-          archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_REPAIRED.zip"
-          curl --fail --location --retry 3 --retry-delay 2 --max-time 120 "https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/main/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_REPAIRED.zip" --output "$archive"
-          echo "37a3e8148d7b6b071a9320b3f7cdb5f6c94d486e5396cea696dfaec5ee0adcc5  $archive" | sha256sum --check --strict
+          archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_RUFF_REPAIRED.zip"
+          curl --fail --location --retry 3 --retry-delay 2 --max-time 120 "https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/main/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P0_RUFF_REPAIRED.zip" --output "$archive"
+          echo "0977ab4ae2e9a90466e029c93117954740f842b1e7904e24126fd1514f53ae92  $archive" | sha256sum --check --strict
           mkdir -p "$RUNNER_TEMP/v17-source"
           python -m zipfile -e "$archive" "$RUNNER_TEMP/v17-source"
       - name: Install scanner
