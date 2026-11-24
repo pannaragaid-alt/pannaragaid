@@ -47,7 +47,7 @@ jobs:
               seen, total = set(), 0
               for info in infos:
                   name = info.filename
-                  if not name or "\\\\" in name:
+                  if not name or "\\" in name:
                       raise SystemExit(f"invalid archive path: {name!r}")
                   normalized = name[:-1] if info.is_dir() and name.endswith("/") else name
                   path = PurePosixPath(normalized)
@@ -130,7 +130,7 @@ jobs:
               seen, total = set(), 0
               for info in infos:
                   name = info.filename
-                  if not name or "\\\\" in name:
+                  if not name or "\\" in name:
                       raise SystemExit(f"invalid archive path: {name!r}")
                   normalized = name[:-1] if info.is_dir() and name.endswith("/") else name
                   path = PurePosixPath(normalized)
@@ -202,7 +202,7 @@ jobs:
               seen, total = set(), 0
               for info in infos:
                   name = info.filename
-                  if not name or "\\\\" in name:
+                  if not name or "\\" in name:
                       raise SystemExit(f"invalid archive path: {name!r}")
                   normalized = name[:-1] if info.is_dir() and name.endswith("/") else name
                   path = PurePosixPath(normalized)
