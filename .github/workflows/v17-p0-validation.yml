@@ -253,6 +253,7 @@ jobs:
               runtime_venv="$RUNNER_TEMP/v17-runtime"
               python -m venv "$runtime_venv"
               "$runtime_venv/bin/python" -m pip install --upgrade pip
+              "$runtime_venv/bin/python" -m pip install --upgrade "setuptools>=84.1.0"
               "$runtime_venv/bin/python" -m pip install "$RUNNER_TEMP/v17-source[all,firecrawl,secrets,backup]"
               "$runtime_venv/bin/python" -m pip check
               # Audit only runtime site-packages; the local application itself is not a PyPI dependency.
