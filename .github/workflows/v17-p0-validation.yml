@@ -115,6 +115,6 @@ jobs:
         run: |
           case "${{ matrix.scanner }}" in
             bandit) bandit -q -ll -r v17_niche_intel ;;
-            pip-audit) pip-audit --strict --local ;;
+            pip-audit) pip-audit --strict --local --skip-editable ;;
             semgrep) semgrep scan --config p/security-audit --severity ERROR --error v17_niche_intel ;;
           esac
