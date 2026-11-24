@@ -106,7 +106,7 @@ jobs:
             bandit) python -m pip install "bandit>=1.8,<2" ;;
             pip-audit)
               python -m pip install "pip-audit==2.10.1"
-              python -m pip install -e '.[all,dev,security,firecrawl,secrets]' 'requests>=2.32,<3'
+              python -m pip install -e "$RUNNER_TEMP/v17-source[all,dev,security,firecrawl,secrets]" 'requests>=2.32,<3'
               ;;
             semgrep) python -m pip install "semgrep>=1.100,<2" ;;
           esac
