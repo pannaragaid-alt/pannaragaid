@@ -103,6 +103,32 @@ This document defines operational acceptance. It does not claim that any drill h
 - Demonstrate that rollback does not silently discard accepted jobs or corrupt database state.
 - Record elapsed rollback time and any manual intervention.
 
+## 7. Repository governance and CI enforcement
+
+### Required repository configuration
+- Protect `main` with a GitHub branch protection rule or repository ruleset.
+- Require pull requests before merge; require at least one approval from an authorized reviewer.
+- Require branches to be up to date before merging.
+- Require all six CI checks:
+  - `Tests and build (Python 3.11)`
+  - `Tests and build (Python 3.12)`
+  - `Ruff lint (Python 3.12)`
+  - `bandit security scan`
+  - `pip-audit security scan`
+  - `semgrep security scan`
+- Block force pushes and branch deletion; do not configure routine bypass actors.
+- Keep workflow permissions least-privilege and do not expose secrets to untrusted pull-request code.
+
+### Drill and pass criteria
+- Verify GitHub reports `main` as protected and all six required status checks are enforced.
+- Verify a direct push to `main` is rejected for ordinary contributors.
+- Verify a pull request with a failed required check cannot be merged.
+- Verify a pull request with all required checks passing can be merged by an authorized reviewer.
+- Retain the ruleset/branch-protection configuration export and test evidence.
+
+### Current observed state
+As of 2026-11-24, GitHub reports `main` as `protected=false` with no required status checks. This gate is **OPEN**. The available GitHub integration can inspect this state but cannot change branch-protection or ruleset settings; an authorized repository administrator must configure it in GitHub.
+
 ## Evidence register
 
 For each gate, retain:
@@ -114,4 +140,4 @@ For each gate, retain:
 
 ## P1 exit criteria
 
-P1 may be marked accepted only when all six gates pass in staging, evidence is retained, security findings are triaged with no unresolved critical/high-risk issue, and an authorized reviewer signs off. A green unit-test/security CI run alone is insufficient. Public deployment and P2 remain blocked until then.
+P1 may be marked accepted only when all seven gates pass, including repository governance, evidence is retained, security findings are triaged with no unresolved critical/high-risk issue, and an authorized reviewer signs off. A green unit-test/security CI run alone is insufficient. Public deployment and P2 remain blocked until then.
