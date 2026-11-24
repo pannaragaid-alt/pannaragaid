@@ -1,7 +1,15 @@
 name: V17 P1 Operational Validation
 
 on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
   workflow_dispatch:
+
+concurrency:
+  group: v17-p1-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -17,7 +25,7 @@ jobs:
         python-version: ["3.11", "3.12"]
     steps:
       - name: Set up Python
-        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -58,7 +66,7 @@ jobs:
     timeout-minutes: 20
     steps:
       - name: Set up Python
-        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.12"
       - name: Download and verify source archive
@@ -85,7 +93,7 @@ jobs:
         scanner: [bandit, pip-audit, semgrep]
     steps:
       - name: Set up Python
-        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.12"
       - name: Download and verify source archive
