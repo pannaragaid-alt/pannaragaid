@@ -109,18 +109,19 @@ This document defines operational acceptance. It does not claim that any drill h
 - Protect `main` with a GitHub branch protection rule or repository ruleset.
 - Require pull requests before merge; require at least one approval from an authorized reviewer.
 - Require branches to be up to date before merging.
-- Require all six CI checks:
+- Require all seven CI checks:
   - `Tests and build (Python 3.11)`
   - `Tests and build (Python 3.12)`
   - `Ruff lint (Python 3.12)`
-  - `bandit security scan`
-  - `pip-audit security scan`
-  - `semgrep security scan`
+  - `bandit security scan (Python 3.12)`
+  - `pip-audit security scan (Python 3.11)`
+  - `pip-audit security scan (Python 3.12)`
+  - `semgrep security scan (Python 3.12)`
 - Block force pushes and branch deletion; do not configure routine bypass actors.
 - Keep workflow permissions least-privilege and do not expose secrets to untrusted pull-request code.
 
 ### Drill and pass criteria
-- Verify GitHub reports `main` as protected and all six required status checks are enforced.
+- Verify GitHub reports `main` as protected and all seven required status checks are enforced.
 - Verify a direct push to `main` is rejected for ordinary contributors.
 - Verify a pull request with a failed required check cannot be merged.
 - Verify a pull request with all required checks passing can be merged by an authorized reviewer.
