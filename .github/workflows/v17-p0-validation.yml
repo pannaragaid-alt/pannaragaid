@@ -170,18 +170,26 @@ jobs:
         run: ruff check --config pyproject.toml v17_niche_intel tests
 
   security:
-    name: ${{ matrix.scanner }} security scan
+    name: ${{ matrix.scanner }} security scan (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest
     timeout-minutes: 40
     strategy:
       fail-fast: false
       matrix:
-        scanner: [bandit, pip-audit, semgrep]
+        include:
+          - scanner: bandit
+            python-version: "3.12"
+          - scanner: pip-audit
+            python-version: "3.11"
+          - scanner: pip-audit
+            python-version: "3.12"
+          - scanner: semgrep
+            python-version: "3.12"
     steps:
       - name: Set up Python
         uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
-          python-version: "3.12"
+          python-version: ${{ matrix.python-version }}
       - name: Download and verify source archive
         run: |
           set -euo pipefail
