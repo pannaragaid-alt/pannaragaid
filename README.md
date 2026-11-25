@@ -23,9 +23,11 @@ P1 remains open until the following are executed in a controlled staging environ
 2. Process supervision, graceful shutdown, crash recovery, worker restart, and lease recovery tests.
 3. Centralized structured logs, metrics, dashboards, and tested alert delivery.
 4. Authentication and authorization/RBAC enforcement, including negative tests and confirmation that anonymous public access is blocked.
-5. Provider integration, concurrency/load/soak tests, rate-limit handling, and rollback rehearsal.
+5. Provider integration, concurrency/load/soak tests, rate-limit handling, and multi-user isolation.
+6. Staging rollback rehearsal, including data consistency and recovery verification.
+7. Repository governance: protected `main`, required PR approval, all seven required CI checks, and force-push/deletion prevention.
 
-See [P1 Operational Acceptance](docs/P1_OPERATIONAL_ACCEPTANCE.md) for evidence requirements and exit criteria.
+See [P1 Operational Acceptance](docs/P1_OPERATIONAL_ACCEPTANCE.md) for evidence requirements and exit criteria, and [Repository Governance](docs/operations/REPOSITORY_GOVERNANCE.md) for the administrator runbook and verification helper.
 
 ## Release policy
 

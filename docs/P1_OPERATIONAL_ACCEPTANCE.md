@@ -128,7 +128,7 @@ This document defines operational acceptance. It does not claim that any drill h
 - Retain the ruleset/branch-protection configuration export and test evidence.
 
 ### Current observed state
-As of 2026-11-24, GitHub reports `main` as `protected=false` with no required status checks. This gate is **OPEN**. The available GitHub integration can inspect this state but cannot change branch-protection or ruleset settings; an authorized repository administrator must configure it in GitHub.
+As of 2026-11-25, the last observed GitHub state was `main` with `protected=false`, no required status checks, and no repository rulesets. This gate remains **OPEN** until an administrator applies and verifies the policy. A reproducible helper is now provided at [`scripts/configure-main-protection.sh`](../scripts/configure-main-protection.sh), with the exact administrator procedure in [Repository Governance](operations/REPOSITORY_GOVERNANCE.md). The helper defaults to read-only `--check`; the administrator must explicitly run `--apply` with repository administration permission, then retain the successful read-back output and test-PR evidence. The current integration cannot perform that privileged settings change.
 
 ## Evidence register
 
