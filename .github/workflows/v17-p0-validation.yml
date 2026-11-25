@@ -32,7 +32,7 @@ jobs:
           archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P1_OPERATIONAL_HARDENED.zip"
           url="https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/${{ github.sha }}/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P1_OPERATIONAL_HARDENED.zip"
           curl --fail --location --retry 3 --retry-delay 2 --max-time 120 "$url" --output "$archive"
-          echo "4c11afe47643691f1c1867eb43b414365c5137a7cb9282fd65c3bfdd72186357  $archive" | sha256sum --check --strict
+          echo "bc0f544210e17d8064f40d22d32dbe03661420f1c26dae2666e683bdf7dc0837  $archive" | sha256sum --check --strict
           python - "$archive" <<'PY'
           import stat, sys, zipfile
           from pathlib import PurePosixPath
@@ -115,7 +115,7 @@ jobs:
           set -euo pipefail
           archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P1_OPERATIONAL_HARDENED.zip"
           curl --fail --location --retry 3 --retry-delay 2 --max-time 120 "https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/${{ github.sha }}/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P1_OPERATIONAL_HARDENED.zip" --output "$archive"
-          echo "4c11afe47643691f1c1867eb43b414365c5137a7cb9282fd65c3bfdd72186357  $archive" | sha256sum --check --strict
+          echo "bc0f544210e17d8064f40d22d32dbe03661420f1c26dae2666e683bdf7dc0837  $archive" | sha256sum --check --strict
           python - "$archive" <<'PY'
           import stat, sys, zipfile
           from pathlib import PurePosixPath
@@ -195,7 +195,7 @@ jobs:
           set -euo pipefail
           archive="$RUNNER_TEMP/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P1_OPERATIONAL_HARDENED.zip"
           curl --fail --location --retry 3 --retry-delay 2 --max-time 120 "https://raw.githubusercontent.com/pannaragaid-alt/pannaragaid/${{ github.sha }}/V17_GLOBAL_GROWTH_ENGINE_0.7.0_P1_OPERATIONAL_HARDENED.zip" --output "$archive"
-          echo "4c11afe47643691f1c1867eb43b414365c5137a7cb9282fd65c3bfdd72186357  $archive" | sha256sum --check --strict
+          echo "bc0f544210e17d8064f40d22d32dbe03661420f1c26dae2666e683bdf7dc0837  $archive" | sha256sum --check --strict
           python - "$archive" <<'PY'
           import stat, sys, zipfile
           from pathlib import PurePosixPath
