@@ -40,7 +40,7 @@ fi
 repo="${1:-$DEFAULT_REPO}"
 branch="${2:-$DEFAULT_BRANCH}"
 
-if [[ "$repo" != */* || -z "${repo##*/}" || "$branch" != "main" ]]; then
+if [[ ! "$repo" =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ || "$branch" != "main" ]]; then
   echo "ERROR: this policy is intentionally scoped to the main branch; repository must be owner/name." >&2
   exit 2
 fi
