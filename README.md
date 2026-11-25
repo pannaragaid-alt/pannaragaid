@@ -19,13 +19,15 @@ The archive is SHA-256 pinned in the GitHub Actions workflow. The workflow downl
 
 P1 remains open until the following are executed in a controlled staging environment and the evidence is recorded:
 
-1. Backup and restore drill, including measured RPO/RTO and application-level integrity checks.
+1. Backup and restore drill, including external encrypted storage, measured RPO/RTO, fallback recovery, and application-level integrity checks.
 2. Process supervision, graceful shutdown, crash recovery, worker restart, and lease recovery tests.
 3. Centralized structured logs, metrics, dashboards, and tested alert delivery.
 4. Authentication and authorization/RBAC enforcement, including negative tests and confirmation that anonymous public access is blocked.
 5. Provider integration, concurrency/load/soak tests, rate-limit handling, and rollback rehearsal.
+6. Staging rollback and change-management drill with data-consistency verification.
+7. Repository governance: protected main, PR approval, up-to-date branch, and all seven required CI checks.
 
-See [P1 Operational Acceptance](docs/P1_OPERATIONAL_ACCEPTANCE.md) for evidence requirements and exit criteria.
+See [P1 Operational Acceptance](docs/P1_OPERATIONAL_ACCEPTANCE.md) for pass criteria and [P1 User Execution Guide](docs/P1_USER_EXECUTION_GUIDE.md) for the exact operator-owned prerequisites, setup sequence, drills, and evidence package.
 
 ## Release policy
 

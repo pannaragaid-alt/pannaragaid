@@ -1,5 +1,7 @@
 # P1 Operational Acceptance Runbook
 
+Operator setup, exact prerequisites, GitHub governance steps, staging drills, and handoff checklist: [P1 User Execution Guide](P1_USER_EXECUTION_GUIDE.md).
+
 Status: **OPEN — execution evidence required**  
 Scope: V17 Global Growth Engine 0.7.0 P1  
 Rule: Do not mark P1 accepted or proceed to P2 until every gate below is passed and evidence is retained.
@@ -128,7 +130,7 @@ This document defines operational acceptance. It does not claim that any drill h
 - Retain the ruleset/branch-protection configuration export and test evidence.
 
 ### Current observed state
-As of 2026-11-24, GitHub reports `main` as `protected=false` with no required status checks. This gate is **OPEN**. The available GitHub integration can inspect this state but cannot change branch-protection or ruleset settings; an authorized repository administrator must configure it in GitHub.
+As of 2026-11-25, GitHub reports `main` as `protected=false` with no required status checks. This gate is **OPEN**. The available GitHub integration can inspect this state but cannot change branch-protection or ruleset settings; an authorized repository administrator must configure it in GitHub.
 
 ## Evidence register
 
